@@ -1,0 +1,8 @@
+<h2>My Trips</h2>
+<ul class = "trips">
+  <li *ngFor = "let trip of trips" [class.selected]="trip === selectedTrip"
+  (click)="onSelect(trip)">
+    <span class="badge">{{trip.id}}</span> {{trip.name}}
+  </li>
+</ul>
+<app-trip-details [selectedTrip] = "selectedTrip"></app-trip-details>

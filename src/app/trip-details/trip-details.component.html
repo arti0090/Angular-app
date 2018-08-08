@@ -1,0 +1,10 @@
+<h1>{{selectedTrip.id}}</h1>
+<div *ngIf="selectedTrip">
+    <h2>{{selectedTrip.name | uppercase}} Details</h2>
+    <div><span>id: </span>{{selectedTrip.id}}</div>
+    <div>
+      <label>name:
+        <input [(ngModel)]="selectedTrip.name" placeholder="name">
+      </label>
+    </div>
+</div>
