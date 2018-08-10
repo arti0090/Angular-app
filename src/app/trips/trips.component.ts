@@ -13,7 +13,7 @@ import { post } from '../../../node_modules/@types/selenium-webdriver/http';
 export class TripsComponent implements OnInit {
 
   trips: Trip[];
-  // name: String = "default"; 
+  // name: String = "default";
   // age: number = 15;
   selectedTrip: Trip;
 
@@ -23,14 +23,27 @@ export class TripsComponent implements OnInit {
     this.getTrips();
   }
 
-  onSelect(trip: Trip): Trip {
-    this.selectedTrip = trip;
-    return this.selectedTrip;
-  }
+  // onSelect(trip: Trip): Trip {
+  //   this.selectedTrip = trip;
+  //   return this.selectedTrip;
+  // }
 
   getTrips(): void {
     this.tripService.getTrips().subscribe(
     trips => this.trips = trips);
   }
 
+  add(name: string): void {
+    name = name.trim();
+    if (!name) { return; }
+    this.tripService.addTrip({ name } as Trip)
+    .subscribe(trip => {
+      this.trips.push(trip);
+    });
+  }
+
+  delete(trip: Trip): void {
+    this.trips = this.trips.filter( h => h !== trip);
+    this.tripService.deleteTrip(trip).subscribe();
+  }
 }

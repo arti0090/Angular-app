@@ -10,6 +10,10 @@ import { AppRoutingModule } from './/app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TripDetailsComponent } from './trip-details/trip-details.component';
 
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './in-memory-data.service';
+import { HttpClientModule } from '../../node_modules/@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +26,9 @@ import { TripDetailsComponent } from './trip-details/trip-details.component';
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation: false} )
   ],
   providers: [],
   bootstrap: [AppComponent]

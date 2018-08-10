@@ -1,8 +1,21 @@
 <h2>My Trips</h2>
 <ul class = "trips">
-  <li *ngFor = "let trip of trips" [class.selected]="trip === selectedTrip"
-  (click)="onSelect(trip)">
+  <li *ngFor = "let trip of trips">
+  <a routerLink="/detail/{{trip.id}}">
     <span class="badge">{{trip.id}}</span> {{trip.name}}
+  </a>
+    <button class="delete" title="delete trip"
+      (click)="delete(trip)">x</button>
   </li>
 </ul>
-<app-trip-details [selectedTrip] = "selectedTrip"></app-trip-details>
+<div>
+  <label>Trip name:
+    <input #tripName />
+  </label>
+  <!-- (click) - add record and clears -->
+  <button (click)="add(tripName.value); tripName.value=''">
+    add
+  </button>
+
+</div>
+<!-- <app-trip-details [selectedTrip] = "selectedTrip"></app-trip-details> -->
