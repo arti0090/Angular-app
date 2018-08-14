@@ -80,15 +80,25 @@ export class TripService {
     );
   }
 
+  // GET trip with search term
+
+  searchTrip(term: string): Observable<Trip[]> {
+    if (!term.trim()) {
+      // if empty,return epmty array
+      return of([]);
+    }
+    return this.http.get<Trip[]>(`${this.tripsUrl}/?name=${term}`).pipe(
+      tap(_ => this.log(`found trips matching "${term}"`)),
+      catchError(this.handleError<Trip[]>(`searchTrips` , []))
+    );
+  }
 
 
 
 
-
-
-  /** Log a HeroService message with the MessageService */
+  /** Log a TripService message with the MessageService */
   private log(message: string) {
-    this.messageService.add(`HeroService: ${message}`);
+    this.messageService.add(`TripService: ${message}`);
   }
 
 

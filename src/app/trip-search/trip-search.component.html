@@ -1,0 +1,13 @@
+<div id="search-component">
+  <h4>Trip search</h4>
+
+  <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+
+  <ul class="search-result">
+    <li *ngFor= "let trip of trips$ | async" >
+        <a routerLink="/detail/{{trip.id}}">
+          {{trip.name}}
+        </a>
+    </li>
+  </ul>
+</div>

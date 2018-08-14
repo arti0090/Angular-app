@@ -13,6 +13,7 @@ import { TripDetailsComponent } from './trip-details/trip-details.component';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 import { HttpClientModule } from '../../node_modules/@angular/common/http';
+import { TripSearchComponent } from './trip-search/trip-search.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HttpClientModule } from '../../node_modules/@angular/common/http';
     TripEditorComponent,
     MessagesComponent,
     DashboardComponent,
-    TripDetailsComponent
+    TripDetailsComponent,
+    TripSearchComponent
   ],
   imports: [
     BrowserModule,
